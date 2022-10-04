@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS account;
+-- DROP TABLE IF EXISTS post;
+
+CREATE TABLE account (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user TEXT UNIQUE NOT NULL,
+  date_joined DATE NOT NULL,
+  cpf VARCHAR(11) NOT NULL,
+  balance INTEGER NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+-- CREATE TABLE acc_transfer (
+--   id INTEGER PRIMARY KEY AUTOINCREMENT,
+--   author_id INTEGER NOT NULL,
+--   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   title TEXT NOT NULL,
+--   body TEXT NOT NULL,
+--   FOREIGN KEY (author_id) REFERENCES user (id)
+-- );

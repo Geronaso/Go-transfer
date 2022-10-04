@@ -1,0 +1,8 @@
+POST http://localhost:1323/accounts HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Paula",
+    "cpf": "12345678901",
+    "secret": "123456"
+}
