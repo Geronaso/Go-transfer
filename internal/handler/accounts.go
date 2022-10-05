@@ -15,7 +15,7 @@ func PostAcc(c echo.Context) (err error) {
 
 	current_time := time.Now().Local().Format(time.RFC3339)
 	account.Created_at = current_time
-	account.Balance = 0
+	account.Balance = 1000
 
 	// Validate data received
 	if err = c.Bind(account); err != nil {

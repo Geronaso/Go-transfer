@@ -5,3 +5,11 @@ content-type: application/json
     "cpf": "12345678902",
     "secret": "123456"
 }
+
+POST http://localhost:1323/login HTTP/1.1
+content-type: application/json
+
+{
+    "cpf": "12345678903",
+    "secret": "123456"
+}

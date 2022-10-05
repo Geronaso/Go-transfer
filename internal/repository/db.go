@@ -2,19 +2,19 @@ package repository
 
 import (
 	"database/sql"
-	"net/http"
+	"errors"
+	"fmt"
 	"strings"
-
-	"github.com/labstack/echo/v4"
 )
 
 func CheckErr(err error) error {
 
 	if err != nil {
 		string_error := err.Error()
+		fmt.Println(string_error)
 
-		if strings.Contains(string_error, "sql: no rows in result set") {
-			return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		if strings.Contains(string_error, "Rows are closed") {
+			return errors.New("not found on database")
 		}
 
 	}

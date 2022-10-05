@@ -2,6 +2,7 @@ package handler
 
 import (
 	"go-transfer/internal/dto"
+	"go-transfer/internal/service"
 	"net/http"
 	"time"
 
@@ -13,9 +14,15 @@ func GetTra(c echo.Context) (err error) {
 
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(*jwtCustomClaims)
-	name := claims.Cpf
+	cpf := claims.Cpf
 
-	return c.String(http.StatusOK, "Welcome "+name+"!")
+	transfers, err := service.RetrieveTransfer(cpf)
+
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+
+	return c.JSONPretty(http.StatusOK, transfers, "")
 
 }
 
@@ -36,6 +43,14 @@ func PostTra(c echo.Context) (err error) {
 	}
 	if err = c.Validate(transfer); err != nil {
 		return err
+	}
+
+	if transfer.Account_destination == transfer.Account_origin {
+		return echo.NewHTTPError(http.StatusBadRequest, "You can not make a transfer to yourself")
+	}
+
+	if err = service.ProcessTransfer(transfer); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
 	return c.String(http.StatusOK, "Transfer Completed")
