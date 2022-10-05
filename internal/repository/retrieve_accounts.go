@@ -21,6 +21,8 @@ func GetAccountsDB() ([]datastruct.Account, error) {
 		accounts_info = append(accounts_info, current_account)
 	}
 
+	defer db.Close()
+
 	return accounts_info, err
 }
 
@@ -35,6 +37,8 @@ func GetBalanceDB(user string) (string, error) {
 	var balance string
 	query.Next()
 	err = query.Scan(&balance)
+
+	defer db.Close()
 
 	return balance, err
 }

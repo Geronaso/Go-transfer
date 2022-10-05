@@ -7,13 +7,13 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func CreateAccount(p *dto.Account) (err error) {
+func CreateAccount(account *dto.Account) (err error) {
 
-	hashed, _ := bcrypt.GenerateFromPassword([]byte(p.Secret), 8)
+	hashed, _ := bcrypt.GenerateFromPassword([]byte(account.Secret), 8)
 
-	p.Secret = string(hashed)
+	account.Secret = string(hashed)
 
-	err = repository.StoreAccountDB(p)
+	err = repository.StoreAccountDB(account)
 	return err
 
 }

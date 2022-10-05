@@ -26,6 +26,7 @@ func main() {
 	e := echo.New()
 	e.Validator = &CustomValidator{validator: validator.New()}
 	e = handler.NewRouter(e)
+
 	e.Logger.Fatal(e.Start(":1323"))
 
 }
