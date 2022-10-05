@@ -17,8 +17,6 @@ func NewRouter(e *echo.Echo) *echo.Echo {
 	e.GET("/accounts/:id/balance", GetAccId)
 	e.POST("/accounts", PostAcc)
 	e.POST("/login", PostLog)
-	// e.GET("/transfers", GetTra)
-	// e.POST("/transfers", PostTransf)
 
 	// Restricted group
 	r := e.Group("/transfers")
@@ -30,6 +28,7 @@ func NewRouter(e *echo.Echo) *echo.Echo {
 	}
 	r.Use(middleware.JWTWithConfig(config))
 	r.GET("", GetTra)
+	r.POST("", PostTra)
 
 	return e
 }

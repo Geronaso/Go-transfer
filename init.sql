@@ -1,6 +1,5 @@
 DROP TABLE IF EXISTS account;
-DROP TABLE IF EXISTS token;
--- DROP TABLE IF EXISTS acc_transfer;
+DROP TABLE IF EXISTS acc_transfer;
 
 CREATE TABLE account (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -11,18 +10,10 @@ CREATE TABLE account (
   password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE token (
+CREATE TABLE acc_transfer (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  cpf VARCHAR(11) NOT NULL,
-  token VARCHAR(255) NOT NULL,
-  FOREIGN KEY (cpf) REFERENCES account (cpf)
+  account_origin_id TEXT NOT NULL,
+  account_destiantion_id TEXT NOT NULL,
+  amount INTEGER NOT NULL,
+  created_at DATE NOT NULL
 );
-
--- CREATE TABLE acc_transfer (
---   id INTEGER PRIMARY KEY AUTOINCREMENT,
---   author_id INTEGER NOT NULL,
---   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
---   title TEXT NOT NULL,
---   body TEXT NOT NULL,
---   FOREIGN KEY (author_id) REFERENCES user (id)
--- );

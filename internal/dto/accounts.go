@@ -5,5 +5,5 @@ type Account struct {
 	Cpf        string `json:"cpf" validate:"required,len=11"`
 	Secret     string `json:"secret" validate:"required,max=50,excludesall= "`
 	Balance    int64  `json:"balance" validate:"omitempty"`
-	Created_at string `json:"created_at" validate:"required"`
+	Created_at string `validate:"required"`
 }

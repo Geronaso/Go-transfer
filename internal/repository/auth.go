@@ -1,7 +1,5 @@
 package repository
 
-import "fmt"
-
 func RetrieveHashPass(user string) (string, error) {
 
 	db, err := StartDb()
@@ -18,24 +16,5 @@ func RetrieveHashPass(user string) (string, error) {
 	defer db.Close()
 
 	return hashed_pass, err
-
-}
-
-func StoreTokenDB(token string, cpf string) error {
-	db, err := StartDb()
-	CheckErr(err)
-
-	stmt, err := db.Prepare("INSERT INTO token(cpf, token) values(?,?)")
-	CheckErr(err)
-
-	fmt.Println(token)
-
-	_, err = stmt.Exec(cpf, token)
-	CheckErr(err)
-
-	defer db.Close()
-	defer stmt.Close()
-
-	return err
 
 }

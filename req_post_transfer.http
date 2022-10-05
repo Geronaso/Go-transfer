@@ -1,0 +1,8 @@
+POST http://localhost:1323/transfers HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwMiIsImV4cCI6MTY2NTAzMTYzMX0.pliRW0OjrFOIKDCli-Cm678nNqJ23EAyWmHKiVMXAZc
+
+{
+    "destination_cpf": "12345678902",
+    "amount": 100
+}
