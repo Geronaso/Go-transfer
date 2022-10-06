@@ -16,6 +16,9 @@ func CheckErr(err error) error {
 		if strings.Contains(string_error, "Rows are closed") {
 			return errors.New("not found on database")
 		}
+		if strings.Contains(string_error, "UNIQUE constraint failed: account.cpf") {
+			return errors.New("the cpf is already in use")
+		}
 
 	}
 	return err
