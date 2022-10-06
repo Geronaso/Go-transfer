@@ -47,6 +47,12 @@ go mod tidy
 go run main.go
 ```
 
+## Google Cloud Provider
+
+https://go-transfer-geronaso-bcaeeczeha-uc.a.run.app
+
+I made a CI/CD pipeline that run the written tests and deploy
+
 # Database
 
 The database.db file is pre loaded with two tables, account and transfers. These tables are also pre loaded with some values for easy testing:
@@ -156,6 +162,9 @@ id | account_origin_id | account_destination_id | amount | created_at
         "Token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwNCIsImV4cCI6MTY2NTExNjU3Nn0.nyHJ-sOm8vk3fusByDgw1opeMlu2zA8NXFdbvbbDe0Y"
         }
 ```
+### JWT
+
+The token provided by the API expires after 24 hours.
 
 ## /transfer
 
@@ -212,9 +221,16 @@ id | account_origin_id | account_destination_id | amount | created_at
         }
 ```
 
+
+
 ## Testing Endpoints
 
-The req folder has some http templates to do some easy testing, but you can also use your preferred tool to test the endpoints!
+[POSTMAN](https://www.postman.com/foxmc/workspace/go-transfer)
+
+I have made a workspace at postman for easy testing.
+
+
+The req folder also has some http templates to do some easy testing, but you can also use your preferred tool to test the endpoints!
 
 # Tests
 
@@ -224,12 +240,33 @@ The folder tests has some written tests for the endpoint /accounts. The database
 go test .\tests\
 ```
 
+# Pipeline
+
+The pipeline is ilustrated in the GCP-Deploy.yml file at .github/workflows
+
+It runs the following steps on push.
+
+```mermaid
+graph TD;
+    Authenticate GCP-->Docker Build;
+    Docker Build-->Go test;
+    Go test --> GCP Deploy;
+
+```
+
+Authenticate GCP authenticates at my account at GCP.
+
+Docker Build makes the docker file for deployment.
+
+Go test tests the docker image with written tests.
+
+GCP Deploy finally deploy the application to production at GCP.
 
 
 ## TO-DO
 
 * Write better error messages.
-    * It is necessary to write better error messages specially for database related errors, so it becomes easier to debug and also a better looking API.
+    * It is necessary to write better error messages specially for database related errors, so it becomes easier to debug and also to be more of a RESTful API.
 
 * Write more tests
     * Currently only the endpoint /accounts has written tests, it is necessary to write tests for the others endpoints as well.
