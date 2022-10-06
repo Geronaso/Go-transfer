@@ -53,7 +53,7 @@ https://go-transfer-geronaso-bcaeeczeha-uc.a.run.app
 
 I made a CI/CD pipeline that runs written tests and deploys at production, it is further explained at [Pipeline](#Pipeline)
 
-I also recommend testing it with [Postman](##Testing Endpoints)
+I also recommend testing it with [Postman](#testing-endpoints)
 
 # Database
 
@@ -71,7 +71,7 @@ id | account_origin_id | account_destination_id | amount | created_at
 1 | 3 | 2 | 300.0 | 2022-10-06T01:08:23-03:00
 2 | 3 | 2 | 200.0 | 2022-10-06T01:08:35-03:00
 
-
+* This might not reflect the database at GCP.
 
 # Endpoints
 
@@ -250,9 +250,9 @@ It runs the following steps on push.
 
 ```mermaid
 graph TD;
-    Authenticate GCP-->Docker Build;
-    Docker Build-->Go test;
-    Go test --> GCP Deploy;
+    Authenticate_GCP-->Docker_Build;
+    Docker_Build-->Go_test;
+    Go_test-->GCP_Deploy;
 
 ```
 
