@@ -207,7 +207,7 @@ The token provided by the API expires after 24 hours.
 ``` 
             Authorization: Bearer [access_token]
 ```
-    + Body
++ Body
 ```    
         {
             "destination_cpf": "12345678902",
