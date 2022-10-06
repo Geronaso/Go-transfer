@@ -90,6 +90,7 @@ id | account_origin_id | account_destination_id | amount | created_at
         }
 ```
 
+## /accounts
 + Request (application/json)
 + Method [GET]
 
@@ -162,9 +163,9 @@ id | account_origin_id | account_destination_id | amount | created_at
     + Method [GET]
 
     + Headers
-
+```
             Authorization: Bearer [access_token]
-
+```
 + Response 200 (application/json)
     + Body
 ```    
@@ -192,9 +193,9 @@ id | account_origin_id | account_destination_id | amount | created_at
     + Method [POST]
 
     + Headers
-
+``` 
             Authorization: Bearer [access_token]
-
+```
     + Body
 ```    
         {
