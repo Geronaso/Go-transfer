@@ -51,7 +51,9 @@ go run main.go
 
 https://go-transfer-geronaso-bcaeeczeha-uc.a.run.app
 
-I made a CI/CD pipeline that run the written tests and deploy
+I made a CI/CD pipeline that runs written tests and deploys at production, it is further explained at [Pipeline](#Pipeline)
+
+I also recommend testing it with [Postman](##Testing Endpoints)
 
 # Database
 
