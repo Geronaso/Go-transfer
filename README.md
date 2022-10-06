@@ -10,7 +10,7 @@ This API has three Endpoints as follow
 
     + Create user account
     + Return the list of all accounts in the database
-    + Return also the a balance for a specific user
+    + Return the balance for a specific user
 
 + /login
     + Authenticate the user and return a token
