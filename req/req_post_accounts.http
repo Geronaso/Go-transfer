@@ -12,7 +12,16 @@ POST http://localhost:1323/accounts HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Paula",
+    "name": "Carina",
     "cpf": "12345678903",
+    "secret": "123456"
+}
+
+POST http://localhost:1323/accounts HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Juliana",
+    "cpf": "12345678904",
     "secret": "123456"
 }

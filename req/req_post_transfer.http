@@ -1,10 +1,10 @@
 POST http://localhost:1323/transfers HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwMiIsImV4cCI6MTY2NTA4NTA0NH0.U4nLGfe8xllznctvNuABSOmDSw-AiYxCl2wuCZLotRU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwNCIsImV4cCI6MTY2NTExNTY3N30.fVzisO5PBJyJyPxysjREKSq3WxPK-VhbijyBbwsmRAk
 
 {
-    "destination_cpf": "12345678903",
-    "amount": 0.50
+    "destination_cpf": "12345678905",
+    "amount": 200
 }
 
 POST http://localhost:1323/transfers HTTP/1.1
