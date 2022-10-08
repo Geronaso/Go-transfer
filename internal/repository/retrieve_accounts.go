@@ -50,6 +50,7 @@ func GetBalanceDB(user string) (string, error) {
 	err = query.Scan(&balance)
 
 	defer db.Close()
+	defer query.Close()
 
 	return balance, err
 }
