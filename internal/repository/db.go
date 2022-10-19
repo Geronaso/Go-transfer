@@ -7,6 +7,9 @@ import (
 	"strings"
 )
 
+var db *sql.DB
+var err error
+
 func CheckErr(err error) error {
 
 	if err != nil {
@@ -24,10 +27,10 @@ func CheckErr(err error) error {
 	return err
 }
 
-func StartDb() (*sql.DB, error) {
+func StartDb() error {
 	// Connect to database
-	db, err := sql.Open("sqlite3", "./database.db")
+	db, err = sql.Open("sqlite3", "./database.db")
 	CheckErr(err)
 
-	return db, err
+	return db.Ping()
 }

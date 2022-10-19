@@ -2,6 +2,8 @@ package main
 
 import (
 	"go-transfer/internal/handler"
+	"go-transfer/internal/repository"
+	"log"
 	"net/http"
 
 	"github.com/go-playground/validator"
@@ -22,6 +24,11 @@ func (cv *CustomValidator) Validate(i interface{}) error {
 }
 
 func main() {
+
+	err := repository.StartDb()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	e := echo.New()
 	e.Validator = &CustomValidator{validator: validator.New()}

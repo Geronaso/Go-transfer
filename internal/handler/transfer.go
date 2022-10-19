@@ -45,10 +45,6 @@ func PostTra(c echo.Context) (err error) {
 		return err
 	}
 
-	if transfer.Account_destination == transfer.Account_origin {
-		return echo.NewHTTPError(http.StatusBadRequest, "You can not make a transfer to yourself")
-	}
-
 	if err = service.ProcessTransfer(transfer); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}

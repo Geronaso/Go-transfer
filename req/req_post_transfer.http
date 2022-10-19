@@ -1,17 +1,17 @@
-POST http://localhost:1323/transfers HTTP/1.1
+POST http://localhost:8080/transfers HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwNCIsImV4cCI6MTY2NTExNTY3N30.fVzisO5PBJyJyPxysjREKSq3WxPK-VhbijyBbwsmRAk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwNCIsImV4cCI6MTY2NjI5MDM1NX0.EaQkguWiO3ATWHWapabIo61aQup3K0_fw33WlQ1KMoA
 
 {
-    "destination_cpf": "12345678905",
+    "destination_cpf": "12345678903",
     "amount": 200
 }
 
-POST http://localhost:1323/transfers HTTP/1.1
+POST http://localhost:8080/transfers HTTP/1.1
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwMyIsImV4cCI6MTY2NTA4NTg3OH0.33cYYx6PprjtmzrTiGIrdWSwz49y-gtW09rq-3SN10Q
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcGYiOiIxMjM0NTY3ODkwMyIsImV4cCI6MTY2NjI5MDg5M30.gTXTKS42ObRWzbLkLjVcjrPkuDuXXSNuaUpg2hiEvDU
 
 {
-    "destination_cpf": "12345678902",
+    "destination_cpf": "12345678904",
     "amount": 700
 }

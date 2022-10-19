@@ -4,15 +4,11 @@ import "go-transfer/internal/datastruct"
 
 func GetAccountsDB() ([]datastruct.Account, error) {
 
-	db, err := StartDb()
-	if err = CheckErr(err); err != nil {
-		return nil, err
-	}
-
 	query, err := db.Query("SELECT * FROM account")
 	if err = CheckErr(err); err != nil {
 		return nil, err
 	}
+	defer query.Close()
 
 	accounts_info := make([]datastruct.Account, 0)
 
@@ -27,30 +23,20 @@ func GetAccountsDB() ([]datastruct.Account, error) {
 		accounts_info = append(accounts_info, current_account)
 	}
 
-	defer db.Close()
-	defer query.Close()
-
 	return accounts_info, err
 }
 
 func GetBalanceDB(user string) (string, error) {
 
-	db, err := StartDb()
-	if err = CheckErr(err); err != nil {
-		return "", err
-	}
-
 	query, err := db.Query("SELECT balance FROM account WHERE user=?", user)
 	if err = CheckErr(err); err != nil {
 		return "", err
 	}
+	defer query.Close()
 
 	var balance string
 	query.Next()
 	err = query.Scan(&balance)
-
-	defer db.Close()
-	defer query.Close()
 
 	return balance, err
 }

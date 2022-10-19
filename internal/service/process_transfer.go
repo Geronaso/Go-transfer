@@ -12,20 +12,22 @@ import (
 
 func ProcessTransfer(transfer *dto.Transfer) error {
 
-	origin, err := repository.RetrieveAccount(transfer.Account_origin)
-	if err != nil {
-		return err
-	}
-	destination, err := repository.RetrieveAccount(transfer.Account_destination)
-	if err != nil {
-		return err
+	if transfer.Account_destination == transfer.Account_origin {
+		return echo.NewHTTPError(http.StatusBadRequest, "You can not make a transfer to yourself")
 	}
 
-	// TO-DO: Write the logic that subtracts the balance, return error if invalid operation, check if balance is 0
+	origin, err := repository.RetrieveAccountDB(transfer.Account_origin)
+	if err != nil {
+		return err
+	}
+	destination, err := repository.RetrieveAccountDB(transfer.Account_destination)
+	if err != nil {
+		return err
+	}
 
 	result := origin.Balance - transfer.Amount
 	if math.Signbit(result) || origin.Balance == 0 {
-		return echo.NewHTTPError(http.StatusBadRequest, "Insuficient amount to transfer")
+		return echo.NewHTTPError(http.StatusBadRequest, "Insufficient amount to transfer")
 	}
 
 	origin.Balance = origin.Balance - transfer.Amount

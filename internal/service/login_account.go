@@ -12,7 +12,7 @@ import (
 func ValidateUser(user *dto.Login) (string, error) {
 
 	// Retrieve hashed pass from database
-	hashed_pass, err := repository.RetrieveHashPass(user.Cpf)
+	hashed_pass, err := repository.RetrieveHashPassDB(user.Cpf)
 	if err != nil {
 		return hashed_pass, err
 	}

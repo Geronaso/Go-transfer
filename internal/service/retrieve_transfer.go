@@ -7,7 +7,7 @@ import (
 
 func RetrieveTransfer(cpf string) ([]datastruct.Transfer, error) {
 
-	account, err := repository.RetrieveAccount(cpf)
+	account, err := repository.RetrieveAccountDB(cpf)
 	if err != nil {
 		return nil, err
 	}
