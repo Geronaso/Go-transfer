@@ -2,6 +2,8 @@ package tests
 
 import (
 	"go-transfer/internal/handler"
+	"go-transfer/internal/repository"
+	"log"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -50,6 +52,11 @@ func TestHandler_postacc(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			err := repository.StartDb()
+			if err != nil {
+				log.Fatal(err)
+			}
+
 			e := echo.New()
 			e.Validator = &CustomValidator{validator: validator.New()}
 
@@ -85,6 +92,11 @@ func TestHandler_getacc(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
+			err := repository.StartDb()
+			if err != nil {
+				log.Fatal(err)
+			}
+
 			e := echo.New()
 			e.Validator = &CustomValidator{validator: validator.New()}
 

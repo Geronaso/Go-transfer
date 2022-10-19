@@ -34,7 +34,7 @@ This API has three Endpoints as follow
 ```
 docker pull geronaso/go-transfer
 docker build --tag geronaso/go-transfer . 
-docker run -p 1323:8080 -it geronaso/go-transfer
+docker run -p 8080:8080 -it geronaso/go-transfer
 ```
 
 ## Local
