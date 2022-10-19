@@ -37,7 +37,7 @@ func TestHandler_postacc(t *testing.T) {
 		{
 			name:         "ok",
 			whenURL:      "/accounts",
-			whenBody:     `{"name": "Paulo","cpf": "12345678902","secret": "123456"}`,
+			whenBody:     `{"name": "Paula","cpf": "12345678902","secret": "123456"}`,
 			expectStatus: http.StatusOK,
 			expectBody:   "Account Created",
 		},
@@ -86,7 +86,7 @@ func TestHandler_getacc(t *testing.T) {
 			name:         "ok",
 			whenURL:      "/accounts/Paulo/balance",
 			expectStatus: http.StatusOK,
-			expectBody:   "1000",
+			expectBody:   "1200",
 		},
 	}
 
