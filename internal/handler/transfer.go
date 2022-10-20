@@ -4,6 +4,7 @@ import (
 	"go-transfer/internal/dto"
 	"go-transfer/internal/service"
 	"net/http"
+	"sync"
 	"time"
 
 	"github.com/golang-jwt/jwt"
@@ -45,9 +46,17 @@ func PostTra(c echo.Context) (err error) {
 		return err
 	}
 
+	var wg sync.WaitGroup
+
+	// Run sequential not concurrent
+	wg.Add(1)
+
 	if err = service.ProcessTransfer(transfer); err != nil {
+		wg.Done()
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
+
+	wg.Done()
 
 	return c.String(http.StatusOK, "Transfer Completed")
 

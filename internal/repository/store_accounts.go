@@ -1,10 +1,10 @@
 package repository
 
 import (
-	"go-transfer/internal/dto"
+	"go-transfer/internal/datastruct"
 )
 
-func StoreAccountDB(account *dto.Account) error {
+func StoreAccountDB(account *datastruct.Account) error {
 
 	stmt, err := db.Prepare("INSERT INTO account(user, password, cpf, date_joined, balance) values(?,?,?,?,?)")
 	if err = CheckErr(err); err != nil {

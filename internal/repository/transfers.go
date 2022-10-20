@@ -16,7 +16,7 @@ func RetrieveAccountDB(cpf string) (*datastruct.Account, error) {
 	var place_holder string
 	account := new(datastruct.Account)
 	query.Next()
-	err = query.Scan(&account.Id, &account.Name, &account.Date_Joined, &account.Cpf, &account.Balance, &place_holder)
+	err = query.Scan(&account.Id, &account.Name, &account.Created_at, &account.Cpf, &account.Balance, &place_holder)
 	if err = CheckErr(err); err != nil {
 		return nil, err
 	}

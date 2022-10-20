@@ -15,7 +15,7 @@ func GetAccountsDB() ([]datastruct.Account, error) {
 	for query.Next() {
 		current_account := datastruct.Account{}
 		var place_holder string
-		err = query.Scan(&current_account.Id, &current_account.Name, &current_account.Date_Joined, &current_account.Cpf, &current_account.Balance, &place_holder)
+		err = query.Scan(&current_account.Id, &current_account.Name, &current_account.Created_at, &current_account.Cpf, &current_account.Balance, &place_holder)
 		if err = CheckErr(err); err != nil {
 			return nil, err
 		}
