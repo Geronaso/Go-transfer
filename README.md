@@ -107,21 +107,18 @@ id | account_origin_id | account_destination_id | amount | created_at
 ```    
         [
             {
-                "Id": 1,
                 "Name": "Paulo",
                 "Cpf": "12345678905",
                 "Balance": 1200,
                 "Date_Joined": "2022-10-06T01:06:53-03:00"
             },
             {
-                "Id": 2,
                 "Name": "Carina",
                 "Cpf": "12345678903",
                 "Balance": 1300,
                 "Date_Joined": "2022-10-06T01:06:55-03:00"
             },
             {
-                "Id": 3,
                 "Name": "Juliana",
                 "Cpf": "12345678904",
                 "Balance": 500,
